@@ -26,20 +26,20 @@ export default function App() {
         {/* TOP BRANDING & NAVIGATION */}
         <header className="text-center mb-4 sm:mb-5">
           
-          {/* Top Haunt-o-holixxx Pixel Sprites Ribbon */}
+          {/* Top Jagg Cutouts Ribbon */}
           <div className="flex items-center justify-center gap-3 sm:gap-6 mb-2">
             <img 
-              src={`${baseUrl}pixel_bat.png`} 
-              alt="Pixel Bat" 
-              className="w-8 h-8 sm:w-10 sm:h-10 pixel-art animate-pulse" 
+              src={`${baseUrl}real_pixel_skull.png`} 
+              alt="Pixel Skull" 
+              className="w-8 h-8 sm:w-10 sm:h-10 pixel-art" 
             />
             <img 
-              src={`${baseUrl}pixel_pumpkin.png`} 
+              src={`${baseUrl}real_pixel_pumpkin.png`} 
               alt="Pixel Pumpkin" 
               className="w-10 h-10 sm:w-12 sm:h-12 pixel-art" 
             />
             <img 
-              src={`${baseUrl}pixel_candy_corn.png`} 
+              src={`${baseUrl}real_pixel_candy_corn.png`} 
               alt="Pixel Candy Corn" 
               className="w-8 h-8 sm:w-10 sm:h-10 pixel-art" 
             />
@@ -74,9 +74,9 @@ export default function App() {
           {/* Centered Bloody Knife Logo flanked with pixel Halloween candies */}
           <div className="flex items-center justify-center gap-3 sm:gap-6 mb-4 sm:mb-5">
             <img 
-              src={`${baseUrl}pixel_candy_corn.png`} 
+              src={`${baseUrl}real_pixel_candy_corn.png`} 
               alt="Candy Corn" 
-              className="w-9 h-9 sm:w-14 sm:h-14 pixel-art hidden sm:block transform -rotate-12" 
+              className="w-10 h-10 sm:w-14 sm:h-14 pixel-art hidden sm:block transform -rotate-12" 
             />
             
             <div className="w-32 h-32 sm:w-44 sm:h-44 border-2 border-[#ff6600] p-1 bg-black shrink-0 relative">
@@ -85,13 +85,17 @@ export default function App() {
                 alt="SuaRare Logo" 
                 className="w-full h-full object-cover block"
               />
-              <span className="absolute -top-3 -right-3 text-xl select-none">🎃</span>
+              <img 
+                src={`${baseUrl}real_pixel_pumpkin.png`} 
+                alt="" 
+                className="absolute -top-3.5 -right-3.5 w-8 h-8 pixel-art select-none" 
+              />
             </div>
 
             <img 
-              src={`${baseUrl}pixel_candy_wrap.png`} 
+              src={`${baseUrl}real_pixel_candy_wrap.png`} 
               alt="Candy Wrap" 
-              className="w-9 h-9 sm:w-14 sm:h-14 pixel-art hidden sm:block transform rotate-12" 
+              className="w-10 h-10 sm:w-14 sm:h-14 pixel-art hidden sm:block transform rotate-12" 
             />
           </div>
 
@@ -134,18 +138,18 @@ export default function App() {
         {/* 1 YEAR ANNIVERSARY CELEBRATION (NO TIMER - BIRTHDAY HAS PASSED!) */}
         <div id="anniversary" className="retro-box-thick p-4 sm:p-6 md:p-7 text-center mb-3 sm:mb-4 bg-black relative">
           
-          {/* Header with pixel tombstone & ghost */}
-          <div className="flex items-center justify-center gap-2 mb-1">
+          {/* Header with real jagg skull & pumpkin */}
+          <div className="flex items-center justify-center gap-3 mb-1">
             <img 
-              src={`${baseUrl}pixel_ghost.png`} 
-              alt="Ghost" 
+              src={`${baseUrl}real_pixel_skull.png`} 
+              alt="Skull" 
               className="w-8 h-8 sm:w-10 sm:h-10 pixel-art" 
             />
             <span className="text-xs sm:text-sm text-white uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold">
               † 31 ОКТЯБРЯ СОСТОЯЛОСЬ // ГОДОВЩИНА В АДУ †
             </span>
             <img 
-              src={`${baseUrl}pixel_pumpkin.png`} 
+              src={`${baseUrl}real_pixel_pumpkin.png`} 
               alt="Pumpkin" 
               className="w-8 h-8 sm:w-10 sm:h-10 pixel-art" 
             />
@@ -155,57 +159,43 @@ export default function App() {
             ПРОЕКТУ SUARARE ИСПОЛНИЛСЯ 1 ГОД!
           </h2>
 
-          <p className="text-xs sm:text-sm md:text-base text-zinc-300 max-w-xl mx-auto mb-5 leading-relaxed">
-            31 октября наш день рождения успешно отгремел! Проект основан <span className="text-white font-bold">31 октября 2025 года</span>.
-            Позади 365 дней бескомпромиссной зачистки мессенджера от скамеров, спам-ботов и токсичного биомусора.
-            Мы только начинаем.
+          <p className="text-xs sm:text-sm md:text-base text-zinc-300 max-w-xl mx-auto mb-4 leading-relaxed">
+            31 октября наш первый день рождения успешно отгремел! Проект был основан <span className="text-white font-bold">31 октября 2025 года</span>.
+            Позади целый год непрерывной зачистки мессенджера от скамеров, спам-ботов и токсичного мусора.
           </p>
 
-          {/* Milestone Achievements Grid (Instead of countdown timer) */}
-          <div className="border-2 border-[#ff6600] p-3 sm:p-5 bg-black max-w-2xl mx-auto mb-4">
-            <div className="text-xs sm:text-sm text-orange-400 uppercase tracking-widest mb-3 font-bold border-b border-orange-900 pb-1.5 flex items-center justify-center gap-2">
-              <span>★ СТАТИСТИКА ЗА ПЕРВЫЙ ГОД ОЧИСТКИ ★</span>
+          {/* Real Anniversary Box without fabricated stats */}
+          <div className="border-2 border-[#ff6600] p-4 sm:p-5 bg-black max-w-2xl mx-auto mb-4">
+            <div className="flex items-center justify-center gap-2 sm:gap-4 mb-3">
+              <img src={`${baseUrl}real_pixel_candy_corn.png`} alt="" className="w-7 h-7 sm:w-9 sm:h-9 pixel-art" />
+              <div className="text-xs sm:text-sm text-orange-400 uppercase tracking-widest font-bold">
+                ★ ГОД ОЧИСТКИ ТЕЛЕГРАМА ★
+              </div>
+              <img src={`${baseUrl}real_pixel_candy_wrap.png`} alt="" className="w-7 h-7 sm:w-9 sm:h-9 pixel-art" />
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-center">
-              <div className="border-2 border-orange-800 p-2 sm:p-3 bg-black">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-none">1 ГОД</div>
-                <div className="text-[10px] sm:text-xs text-[#ff6600] mt-1.5 font-bold uppercase">В СТРОЮ</div>
-                <div className="text-[9px] text-zinc-500 mt-0.5">с 31.10.2025</div>
-              </div>
+            <p className="text-xs sm:text-sm md:text-base text-white font-bold leading-relaxed mb-3">
+              Никаких фальшивых отчетов и накрученных цифр. Мы просто делаем свое дело: 
+              уничтожаем скам-сетки, зачищаем чаты и возвращаем нормальный порядок в Telegram.
+            </p>
 
-              <div className="border-2 border-orange-800 p-2 sm:p-3 bg-black">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-none">500+</div>
-                <div className="text-[10px] sm:text-xs text-[#ff6600] mt-1.5 font-bold uppercase">РЕЙДОВ</div>
-                <div className="text-[9px] text-zinc-500 mt-0.5">снос под корень</div>
-              </div>
-
-              <div className="border-2 border-orange-800 p-2 sm:p-3 bg-black">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-none">50K+</div>
-                <div className="text-[10px] sm:text-xs text-[#ff6600] mt-1.5 font-bold uppercase">БОТОВ</div>
-                <div className="text-[9px] text-zinc-500 mt-0.5">ликвидировано</div>
-              </div>
-
-              <div className="border-2 border-orange-800 p-2 sm:p-3 bg-black">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-none">100%</div>
-                <div className="text-[10px] sm:text-xs text-[#ff6600] mt-1.5 font-bold uppercase">ЧИСТОТА</div>
-                <div className="text-[9px] text-zinc-500 mt-0.5">гарантия качества</div>
-              </div>
+            <div className="inline-block border border-[#ff6600] px-3 py-1 text-[11px] sm:text-xs text-[#ff6600] font-bold tracking-wider uppercase bg-orange-950/40">
+              † 31.10.2025 ➔ 2026 // SUARARE FOREVER †
             </div>
           </div>
 
-          {/* Tombstone & celebratory slogan */}
+          {/* Real cutouts & slogan footer */}
           <div className="flex items-center justify-center gap-3 mt-3 text-xs sm:text-sm md:text-base text-[#ff6600] tracking-widest uppercase font-bold">
             <img 
-              src={`${baseUrl}pixel_tombstone.png`} 
-              alt="Tombstone" 
-              className="w-6 h-6 sm:w-8 sm:h-8 pixel-art" 
+              src={`${baseUrl}real_pixel_pumpkin_pail.png`} 
+              alt="Pail" 
+              className="w-7 h-7 sm:w-8 sm:h-8 pixel-art" 
             />
-            <span>† RIP SCAM // SUARARE FOREVER †</span>
+            <span>† RIP SCAM // ЧИСТЫЙ ТЕЛЕГРАМ †</span>
             <img 
-              src={`${baseUrl}pixel_tombstone.png`} 
-              alt="Tombstone" 
-              className="w-6 h-6 sm:w-8 sm:h-8 pixel-art" 
+              src={`${baseUrl}real_pixel_pumpkin_pail.png`} 
+              alt="Pail" 
+              className="w-7 h-7 sm:w-8 sm:h-8 pixel-art" 
             />
           </div>
 
@@ -215,9 +205,9 @@ export default function App() {
         <div id="creators" className="retro-box-thick p-4 sm:p-6 md:p-7 mb-3 sm:mb-4 bg-black">
           <div className="text-center mb-4 sm:mb-5">
             <div className="flex items-center justify-center gap-2">
-              <img src={`${baseUrl}pixel_bat.png`} alt="Bat" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+              <img src={`${baseUrl}real_pixel_skull.png`} alt="Skull" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
               <span className="text-xs sm:text-sm text-zinc-400 uppercase tracking-[0.2em] font-bold">ADMINISTRATION</span>
-              <img src={`${baseUrl}pixel_bat.png`} alt="Bat" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+              <img src={`${baseUrl}real_pixel_skull.png`} alt="Skull" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
             </div>
             <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff6600] font-bold uppercase tracking-wide leading-tight">
               СОЗДАТЕЛИ SUARARE
@@ -235,7 +225,7 @@ export default function App() {
               <div>
                 <div className="text-xs sm:text-sm text-zinc-400 uppercase tracking-widest mb-2 border-b border-orange-950 pb-1 flex justify-between font-bold">
                   <span className="flex items-center gap-1.5">
-                    <img src={`${baseUrl}pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art inline" />
+                    <img src={`${baseUrl}real_pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art inline" />
                     FOUNDER
                   </span>
                   <span className="text-white">@oelip</span>
@@ -270,7 +260,7 @@ export default function App() {
               <div>
                 <div className="text-xs sm:text-sm text-zinc-400 uppercase tracking-widest mb-2 border-b border-orange-950 pb-1 flex justify-between font-bold">
                   <span className="flex items-center gap-1.5">
-                    <img src={`${baseUrl}pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art inline" />
+                    <img src={`${baseUrl}real_pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art inline" />
                     FOUNDER
                   </span>
                   <span className="text-white">@spvov</span>
@@ -307,9 +297,9 @@ export default function App() {
         <div id="castes" className="retro-box-thick p-4 sm:p-6 md:p-7 mb-3 sm:mb-4 bg-black">
           <div className="text-center mb-4 sm:mb-5">
             <div className="flex items-center justify-center gap-2">
-              <img src={`${baseUrl}pixel_ghost.png`} alt="Ghost" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+              <img src={`${baseUrl}real_pixel_skull.png`} alt="Skull" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
               <span className="text-xs sm:text-sm text-zinc-400 uppercase tracking-[0.2em] font-bold">RECRUITMENT</span>
-              <img src={`${baseUrl}pixel_ghost.png`} alt="Ghost" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+              <img src={`${baseUrl}real_pixel_skull.png`} alt="Skull" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
             </div>
             <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff6600] font-bold uppercase tracking-wide leading-tight">
               КАСТЫ ОТРЯДА
@@ -384,9 +374,9 @@ export default function App() {
         <div id="services" className="retro-box-thick p-4 sm:p-6 md:p-7 mb-3 sm:mb-4 bg-black">
           <div className="text-center mb-4 sm:mb-5">
             <div className="flex items-center justify-center gap-2">
-              <img src={`${baseUrl}pixel_candy_wrap.png`} alt="Candy" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+              <img src={`${baseUrl}real_pixel_candy_wrap.png`} alt="Candy" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
               <span className="text-xs sm:text-sm text-zinc-400 uppercase tracking-[0.2em] font-bold">PRICING LIST</span>
-              <img src={`${baseUrl}pixel_candy_wrap.png`} alt="Candy" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+              <img src={`${baseUrl}real_pixel_candy_wrap.png`} alt="Candy" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
             </div>
             <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff6600] font-bold uppercase tracking-wide leading-tight">
               УСЛУГИ КОМАНДЫ
@@ -401,7 +391,7 @@ export default function App() {
             
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
               <div className="flex items-center gap-2">
-                <img src={`${baseUrl}pixel_candy_corn.png`} alt="" className="w-4 h-4 pixel-art" />
+                <img src={`${baseUrl}real_pixel_candy_corn.png`} alt="" className="w-4 h-4 pixel-art" />
                 <span className="text-white font-bold">Спам без публикации в тгк</span>
               </div>
               <span className="text-[#ff6600] font-bold uppercase border-2 border-[#ff6600] px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0">
@@ -411,7 +401,7 @@ export default function App() {
 
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
               <div className="flex items-center gap-2">
-                <img src={`${baseUrl}pixel_candy_wrap.png`} alt="" className="w-4 h-4 pixel-art" />
+                <img src={`${baseUrl}real_pixel_candy_wrap.png`} alt="" className="w-4 h-4 pixel-art" />
                 <span className="text-white font-bold">Спам с публикацией в тгк</span>
               </div>
               <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
@@ -421,7 +411,7 @@ export default function App() {
 
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
               <div className="flex items-center gap-2">
-                <img src={`${baseUrl}pixel_candy_corn.png`} alt="" className="w-4 h-4 pixel-art" />
+                <img src={`${baseUrl}real_pixel_candy_corn.png`} alt="" className="w-4 h-4 pixel-art" />
                 <span className="text-white font-bold">Троллинг со спамом</span>
               </div>
               <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
@@ -431,7 +421,7 @@ export default function App() {
 
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
               <div className="flex items-center gap-2">
-                <img src={`${baseUrl}pixel_candy_wrap.png`} alt="" className="w-4 h-4 pixel-art" />
+                <img src={`${baseUrl}real_pixel_candy_wrap.png`} alt="" className="w-4 h-4 pixel-art" />
                 <span className="text-white font-bold">Спам в лс цели</span>
               </div>
               <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
@@ -441,7 +431,7 @@ export default function App() {
 
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
               <div className="flex items-center gap-2">
-                <img src={`${baseUrl}pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art" />
+                <img src={`${baseUrl}real_pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art" />
                 <span className="text-white font-bold">Рейд с ботом который удаляет всех участников группы</span>
               </div>
               <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
