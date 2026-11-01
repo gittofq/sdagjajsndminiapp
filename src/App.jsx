@@ -20,11 +20,67 @@ export default function App() {
         🎃 31 ОКТЯБРЯ ПРОШЛО — НАМ ИСПОЛНИЛСЯ 1 ГОД! † HALLOWEEN UPDATE † НАШ ТЕЛЕГРАМ: T.ME/SUARARE 🎃
       </div>
 
-      {/* 2. SITE CONTAINER (RESPONSIVE & DESKTOP ZOOMED) */}
-      <div className="max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-6 zoom-desktop w-full">
+      {/* 2. SITE CONTAINER (RESPONSIVE & DESKTOP ZOOMED, WITH REAL OUTSIDE PUMPKINS) */}
+      <div className="max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-6 zoom-desktop w-full relative">
         
+        {/* OUTSIDE SIDE PUMPKINS (SITTING OUTSIDE THE BOXES ON THE BLACK BACKGROUND) */}
+        
+        {/* Left Side Pumpkin 1 (Top / Header) */}
+        <div className="hidden lg:block absolute -left-32 xl:-left-44 2xl:-left-56 top-16 pointer-events-none select-none z-0">
+          <img 
+            src={`${baseUrl}real_pumpkin_1.png`} 
+            alt="Halloween Pumpkin Left Top" 
+            className="w-28 xl:w-40 pixel-art transform -rotate-12 filter drop-shadow-[0_0_20px_rgba(255,102,0,0.45)]" 
+          />
+        </div>
+
+        {/* Right Side Pumpkin 1 (Hero / Anniversary) */}
+        <div className="hidden lg:block absolute -right-32 xl:-right-44 2xl:-right-56 top-48 pointer-events-none select-none z-0">
+          <img 
+            src={`${baseUrl}real_pumpkin_2.png`} 
+            alt="Halloween Pumpkin Right Top" 
+            className="w-28 xl:w-40 pixel-art transform rotate-12 filter drop-shadow-[0_0_20px_rgba(255,102,0,0.45)]" 
+          />
+        </div>
+
+        {/* Left Side Pumpkin 2 (Creators / Castes) */}
+        <div className="hidden lg:block absolute -left-32 xl:-left-44 2xl:-left-56 top-[780px] pointer-events-none select-none z-0">
+          <img 
+            src={`${baseUrl}real_pumpkin_2.png`} 
+            alt="Halloween Pumpkin Left Mid" 
+            className="w-28 xl:w-40 pixel-art transform -rotate-6 filter drop-shadow-[0_0_20px_rgba(255,102,0,0.45)]" 
+          />
+        </div>
+
+        {/* Right Side Pumpkin 2 (Castes / Services) */}
+        <div className="hidden lg:block absolute -right-32 xl:-right-44 2xl:-right-56 top-[1020px] pointer-events-none select-none z-0">
+          <img 
+            src={`${baseUrl}real_pumpkin_3.png`} 
+            alt="Halloween Pumpkin Right Mid" 
+            className="w-28 xl:w-36 pixel-art transform rotate-6 filter drop-shadow-[0_0_20px_rgba(255,102,0,0.45)]" 
+          />
+        </div>
+
+        {/* Left Side Pumpkin 3 (Services / Pricing) */}
+        <div className="hidden lg:block absolute -left-32 xl:-left-44 2xl:-left-56 top-[1320px] pointer-events-none select-none z-0">
+          <img 
+            src={`${baseUrl}real_pumpkin_3.png`} 
+            alt="Halloween Pumpkin Left Low" 
+            className="w-28 xl:w-36 pixel-art transform rotate-12 filter drop-shadow-[0_0_20px_rgba(255,102,0,0.45)]" 
+          />
+        </div>
+
+        {/* Right Side Pumpkin 3 (Footer / Bottom) */}
+        <div className="hidden lg:block absolute -right-32 xl:-right-44 2xl:-right-56 top-[1520px] pointer-events-none select-none z-0">
+          <img 
+            src={`${baseUrl}real_pumpkin_1.png`} 
+            alt="Halloween Pumpkin Right Low" 
+            className="w-28 xl:w-40 pixel-art transform -rotate-12 filter drop-shadow-[0_0_20px_rgba(255,102,0,0.45)]" 
+          />
+        </div>
+
         {/* TOP BRANDING & NAVIGATION */}
-        <header className="text-center mb-4 sm:mb-5">
+        <header className="text-center mb-4 sm:mb-5 relative z-10">
           
           {/* Top Jagg Cutouts Ribbon */}
           <div className="flex items-center justify-center gap-3 sm:gap-6 mb-2">
@@ -49,12 +105,8 @@ export default function App() {
             SUARARE
           </div>
           
-          <div className="text-xs sm:text-sm md:text-base text-white tracking-[0.2em] sm:tracking-[0.35em] uppercase mb-1 font-bold">
+          <div className="text-xs sm:text-sm md:text-base text-white tracking-[0.2em] sm:tracking-[0.35em] uppercase mb-3 sm:mb-4 font-bold">
             † ОЧИЩЕНИЕ ТЕЛЕГРАМА ОТ МУСОРА †
-          </div>
-
-          <div className="text-[11px] sm:text-xs text-orange-400 tracking-[0.25em] uppercase mb-3 sm:mb-4 font-bold">
-            [ HAUNT-O-HOLIXXX HALLOWEEN SPECIAL EDITION ]
           </div>
 
           {/* Retro nav menu with square brackets */}
