@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 export default function App() {
-  // Real-time countdown to October 31 (founded 31.10.2025, turns 1 year old on 31.10.2026)
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [visitorCount, setVisitorCount] = useState(1337);
-
   const baseUrl = import.meta.env.BASE_URL || '/';
 
   useEffect(() => {
@@ -13,39 +10,14 @@ export default function App() {
     const count = stored ? parseInt(stored, 10) + 1 : 1337;
     setVisitorCount(count);
     localStorage.setItem('suarare_hits', count.toString());
-
-    // Countdown to 31 October 2026 (1 year anniversary)
-    const updateCountdown = () => {
-      const now = new Date();
-      let targetYear = 2026;
-      let target = new Date(targetYear, 9, 31, 23, 59, 59); // 9 = October
-
-      if (now.getTime() > target.getTime() + 86400000) {
-        target = new Date(now.getFullYear() + 1, 9, 31, 23, 59, 59);
-      }
-
-      const diff = target.getTime() - now.getTime();
-      if (diff > 0) {
-        setTimeLeft({
-          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((diff % (1000 * 60)) / 1000),
-        });
-      }
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-[#ff0000] font-serif-sua selection:bg-red-600 selection:text-black w-full overflow-x-hidden">
+    <div className="min-h-screen bg-black text-[#ff6600] font-serif-sua selection:bg-orange-600 selection:text-black w-full overflow-x-hidden">
       
-      {/* 1. TOP STATIC ANNOUNCEMENT BAR */}
-      <div className="w-full bg-[#ff0000] text-black text-center py-1.5 sm:py-2 px-2 text-xs sm:text-sm md:text-base font-bold tracking-wider sm:tracking-widest uppercase select-none border-b-2 border-black leading-snug">
-        † 31 ОКТЯБРЯ — ПРОЕКТУ SUARARE ИСПОЛНЯЕТСЯ 1 ГОД † НАШ ТЕЛЕГРАМ: T.ME/SUARARE †
+      {/* 1. TOP STATIC ANNOUNCEMENT BAR (HALLOWEEN ORANGE) */}
+      <div className="w-full bg-[#ff6600] text-black text-center py-2 px-3 text-xs sm:text-sm md:text-base font-bold tracking-wider sm:tracking-widest uppercase select-none border-b-2 border-black leading-snug">
+        🎃 31 ОКТЯБРЯ ПРОШЛО — НАМ ИСПОЛНИЛСЯ 1 ГОД! † HALLOWEEN UPDATE † НАШ ТЕЛЕГРАМ: T.ME/SUARARE 🎃
       </div>
 
       {/* 2. SITE CONTAINER (RESPONSIVE & DESKTOP ZOOMED) */}
@@ -53,43 +25,81 @@ export default function App() {
         
         {/* TOP BRANDING & NAVIGATION */}
         <header className="text-center mb-4 sm:mb-5">
-          <div className="font-gothic text-5xl sm:text-7xl md:text-8xl text-[#ff0000] tracking-wider mb-1 leading-none break-words">
+          
+          {/* Top Haunt-o-holixxx Pixel Sprites Ribbon */}
+          <div className="flex items-center justify-center gap-3 sm:gap-6 mb-2">
+            <img 
+              src={`${baseUrl}pixel_bat.png`} 
+              alt="Pixel Bat" 
+              className="w-8 h-8 sm:w-10 sm:h-10 pixel-art animate-pulse" 
+            />
+            <img 
+              src={`${baseUrl}pixel_pumpkin.png`} 
+              alt="Pixel Pumpkin" 
+              className="w-10 h-10 sm:w-12 sm:h-12 pixel-art" 
+            />
+            <img 
+              src={`${baseUrl}pixel_candy_corn.png`} 
+              alt="Pixel Candy Corn" 
+              className="w-8 h-8 sm:w-10 sm:h-10 pixel-art" 
+            />
+          </div>
+
+          <div className="font-gothic text-6xl sm:text-8xl md:text-9xl text-[#ff6600] tracking-wider mb-1 leading-none break-words">
             SUARARE
           </div>
-          <div className="text-xs sm:text-sm md:text-base text-white tracking-[0.2em] sm:tracking-[0.35em] uppercase mb-3 sm:mb-4 font-bold">
+          
+          <div className="text-xs sm:text-sm md:text-base text-white tracking-[0.2em] sm:tracking-[0.35em] uppercase mb-1 font-bold">
             † ОЧИЩЕНИЕ ТЕЛЕГРАМА ОТ МУСОРА †
           </div>
 
+          <div className="text-[11px] sm:text-xs text-orange-400 tracking-[0.25em] uppercase mb-3 sm:mb-4 font-bold">
+            [ HAUNT-O-HOLIXXX HALLOWEEN SPECIAL EDITION ]
+          </div>
+
           {/* Retro nav menu with square brackets */}
-          <nav className="flex flex-wrap justify-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wider border-y-2 border-[#ff0000] py-2">
-            <a href="#about" className="hover:text-black hover:bg-[#ff0000] px-1.5 py-0.5">[ О ПРОЕКТЕ ]</a>
-            <a href="#anniversary" className="hover:text-black hover:bg-[#ff0000] px-1.5 py-0.5 text-white bg-red-950/60">[ 1 ГОД (31.10) ]</a>
-            <a href="#creators" className="hover:text-black hover:bg-[#ff0000] px-1.5 py-0.5">[ СОЗДАТЕЛИ ]</a>
-            <a href="#castes" className="hover:text-black hover:bg-[#ff0000] px-1.5 py-0.5">[ КАСТЫ ]</a>
-            <a href="#services" className="hover:text-black hover:bg-[#ff0000] px-1.5 py-0.5">[ УСЛУГИ ]</a>
-            <a href="https://t.me/suarare" target="_blank" rel="noreferrer" className="hover:text-black hover:bg-[#ff0000] px-1.5 py-0.5">[ TELEGRAM ]</a>
+          <nav className="flex flex-wrap justify-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wider border-y-2 border-[#ff6600] py-2">
+            <a href="#about" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5">[ О ПРОЕКТЕ ]</a>
+            <a href="#anniversary" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5 text-white bg-orange-950/70 border border-orange-600">[ НАМ 1 ГОД! 🎃 ]</a>
+            <a href="#creators" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5">[ СОЗДАТЕЛИ ]</a>
+            <a href="#castes" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5">[ КАСТЫ ]</a>
+            <a href="#services" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5">[ УСЛУГИ ]</a>
+            <a href="https://t.me/suarare" target="_blank" rel="noreferrer" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5">[ TELEGRAM ]</a>
           </nav>
         </header>
 
-        {/* HERO SECTION / BLOODY KNIFE LOGO */}
+        {/* HERO SECTION / BLOODY KNIFE LOGO WITH HALLOWEEN PIXEL ACCENTS */}
         <div id="about" className="retro-box-thick p-4 sm:p-6 md:p-7 text-center mb-3 sm:mb-4 bg-black">
           
-          {/* Centered Bloody Knife Logo */}
-          <div className="flex justify-center mb-4 sm:mb-5">
-            <div className="w-32 h-32 sm:w-44 sm:h-44 border-2 border-[#ff0000] p-1 bg-black shrink-0">
+          {/* Centered Bloody Knife Logo flanked with pixel Halloween candies */}
+          <div className="flex items-center justify-center gap-3 sm:gap-6 mb-4 sm:mb-5">
+            <img 
+              src={`${baseUrl}pixel_candy_corn.png`} 
+              alt="Candy Corn" 
+              className="w-9 h-9 sm:w-14 sm:h-14 pixel-art hidden sm:block transform -rotate-12" 
+            />
+            
+            <div className="w-32 h-32 sm:w-44 sm:h-44 border-2 border-[#ff6600] p-1 bg-black shrink-0 relative">
               <img 
                 src={`${baseUrl}channel_avatar.jpg`} 
                 alt="SuaRare Logo" 
                 className="w-full h-full object-cover block"
               />
+              <span className="absolute -top-3 -right-3 text-xl select-none">🎃</span>
             </div>
+
+            <img 
+              src={`${baseUrl}pixel_candy_wrap.png`} 
+              alt="Candy Wrap" 
+              className="w-9 h-9 sm:w-14 sm:h-14 pixel-art hidden sm:block transform rotate-12" 
+            />
           </div>
 
           <h1 className="text-xl sm:text-3xl md:text-4xl text-white font-bold uppercase tracking-wider mb-2.5 sm:mb-3 leading-tight">
             МЫ ОЧИЩАЕМ ТЕЛЕГРАМ ОТ МУСОРА
           </h1>
 
-          <div className="text-sm sm:text-base md:text-lg text-[#ff0000] leading-relaxed max-w-xl mx-auto space-y-2 mb-4 sm:mb-5 px-1">
+          <div className="text-sm sm:text-base md:text-lg text-[#ff6600] leading-relaxed max-w-xl mx-auto space-y-2 mb-4 sm:mb-5 px-1">
             <p>
               Категорически приветствуем вас в канале <span className="text-white underline">SuaRare</span>.
             </p>
@@ -121,54 +131,95 @@ export default function App() {
 
         </div>
 
-        {/* 1 YEAR ANNIVERSARY SECTION */}
-        <div id="anniversary" className="retro-box-thick p-4 sm:p-6 md:p-7 text-center mb-3 sm:mb-4 bg-black">
-          <div className="text-xs sm:text-sm text-white uppercase tracking-[0.2em] sm:tracking-[0.25em] mb-1 font-bold">
-            † 31 ОКТЯБРЯ // ГОДОВЩИНА ПРОЕКТА †
+        {/* 1 YEAR ANNIVERSARY CELEBRATION (NO TIMER - BIRTHDAY HAS PASSED!) */}
+        <div id="anniversary" className="retro-box-thick p-4 sm:p-6 md:p-7 text-center mb-3 sm:mb-4 bg-black relative">
+          
+          {/* Header with pixel tombstone & ghost */}
+          <div className="flex items-center justify-center gap-2 mb-1">
+            <img 
+              src={`${baseUrl}pixel_ghost.png`} 
+              alt="Ghost" 
+              className="w-8 h-8 sm:w-10 sm:h-10 pixel-art" 
+            />
+            <span className="text-xs sm:text-sm text-white uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold">
+              † 31 ОКТЯБРЯ СОСТОЯЛОСЬ // ГОДОВЩИНА В АДУ †
+            </span>
+            <img 
+              src={`${baseUrl}pixel_pumpkin.png`} 
+              alt="Pumpkin" 
+              className="w-8 h-8 sm:w-10 sm:h-10 pixel-art" 
+            />
           </div>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff0000] font-bold uppercase tracking-wide mb-2 leading-tight">
-            31 ОКТЯБРЯ — ПРОЕКТУ 1 ГОД
+
+          <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff6600] font-bold uppercase tracking-wide mb-2 leading-tight">
+            ПРОЕКТУ SUARARE ИСПОЛНИЛСЯ 1 ГОД!
           </h2>
-          <p className="text-xs sm:text-sm md:text-base text-zinc-300 max-w-lg mx-auto mb-4 sm:mb-5">
-            Проект существует с <span className="text-white font-bold">31 октября 2025 года</span>.
-            Целый год непрерывной борьбы с биомусором, тысячи удаленных спам-сообщений и очищенных групп.
+
+          <p className="text-xs sm:text-sm md:text-base text-zinc-300 max-w-xl mx-auto mb-5 leading-relaxed">
+            31 октября наш день рождения успешно отгремел! Проект основан <span className="text-white font-bold">31 октября 2025 года</span>.
+            Позади 365 дней бескомпромиссной зачистки мессенджера от скамеров, спам-ботов и токсичного биомусора.
+            Мы только начинаем.
           </p>
 
-          {/* Brutalist Retro Countdown Boxes */}
-          <div className="border-2 border-[#ff0000] p-2.5 sm:p-4 md:p-5 inline-block mx-auto mb-3 sm:mb-4 bg-black max-w-full">
-            <div className="text-[11px] sm:text-xs md:text-sm text-zinc-400 uppercase tracking-widest mb-2 font-bold">
-              ОБРАТНЫЙ ОТСЧЕТ ДО 1 ГОДА ПРОЕКТУ:
+          {/* Milestone Achievements Grid (Instead of countdown timer) */}
+          <div className="border-2 border-[#ff6600] p-3 sm:p-5 bg-black max-w-2xl mx-auto mb-4">
+            <div className="text-xs sm:text-sm text-orange-400 uppercase tracking-widest mb-3 font-bold border-b border-orange-900 pb-1.5 flex items-center justify-center gap-2">
+              <span>★ СТАТИСТИКА ЗА ПЕРВЫЙ ГОД ОЧИСТКИ ★</span>
             </div>
-            <div className="grid grid-cols-4 gap-1.5 sm:gap-2.5 md:gap-3 text-center">
-              <div className="border-2 border-red-800 p-1.5 sm:p-2.5 md:p-3 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] bg-black">
-                <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-none">{String(timeLeft.days).padStart(2, '0')}</div>
-                <div className="text-[9px] sm:text-[11px] md:text-xs text-[#ff0000] mt-1 font-bold">ДНЕЙ</div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-center">
+              <div className="border-2 border-orange-800 p-2 sm:p-3 bg-black">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-none">1 ГОД</div>
+                <div className="text-[10px] sm:text-xs text-[#ff6600] mt-1.5 font-bold uppercase">В СТРОЮ</div>
+                <div className="text-[9px] text-zinc-500 mt-0.5">с 31.10.2025</div>
               </div>
-              <div className="border-2 border-red-800 p-1.5 sm:p-2.5 md:p-3 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] bg-black">
-                <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-none">{String(timeLeft.hours).padStart(2, '0')}</div>
-                <div className="text-[9px] sm:text-[11px] md:text-xs text-[#ff0000] mt-1 font-bold">ЧАСОВ</div>
+
+              <div className="border-2 border-orange-800 p-2 sm:p-3 bg-black">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-none">500+</div>
+                <div className="text-[10px] sm:text-xs text-[#ff6600] mt-1.5 font-bold uppercase">РЕЙДОВ</div>
+                <div className="text-[9px] text-zinc-500 mt-0.5">снос под корень</div>
               </div>
-              <div className="border-2 border-red-800 p-1.5 sm:p-2.5 md:p-3 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] bg-black">
-                <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-none">{String(timeLeft.minutes).padStart(2, '0')}</div>
-                <div className="text-[9px] sm:text-[11px] md:text-xs text-[#ff0000] mt-1 font-bold">МИНУТ</div>
+
+              <div className="border-2 border-orange-800 p-2 sm:p-3 bg-black">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-none">50K+</div>
+                <div className="text-[10px] sm:text-xs text-[#ff6600] mt-1.5 font-bold uppercase">БОТОВ</div>
+                <div className="text-[9px] text-zinc-500 mt-0.5">ликвидировано</div>
               </div>
-              <div className="border-2 border-red-800 p-1.5 sm:p-2.5 md:p-3 min-w-[55px] sm:min-w-[70px] md:min-w-[90px] bg-black">
-                <div className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-none">{String(timeLeft.seconds).padStart(2, '0')}</div>
-                <div className="text-[9px] sm:text-[11px] md:text-xs text-[#ff0000] mt-1 font-bold">СЕКУНД</div>
+
+              <div className="border-2 border-orange-800 p-2 sm:p-3 bg-black">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-none">100%</div>
+                <div className="text-[10px] sm:text-xs text-[#ff6600] mt-1.5 font-bold uppercase">ЧИСТОТА</div>
+                <div className="text-[9px] text-zinc-500 mt-0.5">гарантия качества</div>
               </div>
             </div>
           </div>
 
-          <div className="text-xs sm:text-sm md:text-base text-[#ff0000] tracking-widest uppercase font-bold">
-            † 31.10.2025 — 1 ГОД ВМЕСТЕ С SUARARE †
+          {/* Tombstone & celebratory slogan */}
+          <div className="flex items-center justify-center gap-3 mt-3 text-xs sm:text-sm md:text-base text-[#ff6600] tracking-widest uppercase font-bold">
+            <img 
+              src={`${baseUrl}pixel_tombstone.png`} 
+              alt="Tombstone" 
+              className="w-6 h-6 sm:w-8 sm:h-8 pixel-art" 
+            />
+            <span>† RIP SCAM // SUARARE FOREVER †</span>
+            <img 
+              src={`${baseUrl}pixel_tombstone.png`} 
+              alt="Tombstone" 
+              className="w-6 h-6 sm:w-8 sm:h-8 pixel-art" 
+            />
           </div>
+
         </div>
 
         {/* CREATORS SECTION / OELIP & SPVOV */}
         <div id="creators" className="retro-box-thick p-4 sm:p-6 md:p-7 mb-3 sm:mb-4 bg-black">
           <div className="text-center mb-4 sm:mb-5">
-            <div className="text-xs sm:text-sm text-zinc-400 uppercase tracking-[0.2em] font-bold">ADMINISTRATION</div>
-            <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff0000] font-bold uppercase tracking-wide leading-tight">
+            <div className="flex items-center justify-center gap-2">
+              <img src={`${baseUrl}pixel_bat.png`} alt="Bat" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+              <span className="text-xs sm:text-sm text-zinc-400 uppercase tracking-[0.2em] font-bold">ADMINISTRATION</span>
+              <img src={`${baseUrl}pixel_bat.png`} alt="Bat" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+            </div>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff6600] font-bold uppercase tracking-wide leading-tight">
               СОЗДАТЕЛИ SUARARE
             </h2>
             <div className="text-xs sm:text-sm md:text-base text-zinc-300 mt-1">
@@ -180,15 +231,18 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             
             {/* OELIP */}
-            <div className="border-2 border-[#ff0000] p-3.5 sm:p-4 bg-black flex flex-col justify-between">
+            <div className="border-2 border-[#ff6600] p-3.5 sm:p-4 bg-black flex flex-col justify-between">
               <div>
-                <div className="text-xs sm:text-sm text-zinc-400 uppercase tracking-widest mb-2 border-b border-red-950 pb-1 flex justify-between font-bold">
-                  <span>FOUNDER</span>
+                <div className="text-xs sm:text-sm text-zinc-400 uppercase tracking-widest mb-2 border-b border-orange-950 pb-1 flex justify-between font-bold">
+                  <span className="flex items-center gap-1.5">
+                    <img src={`${baseUrl}pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art inline" />
+                    FOUNDER
+                  </span>
                   <span className="text-white">@oelip</span>
                 </div>
 
                 {/* Original oelip.jpg */}
-                <div className="border-2 border-[#ff0000] p-1 bg-black my-2">
+                <div className="border-2 border-[#ff6600] p-1 bg-black my-2">
                   <img 
                     src={`${baseUrl}oelip.jpg`} 
                     alt="OELIP" 
@@ -212,15 +266,18 @@ export default function App() {
             </div>
 
             {/* SPVOV */}
-            <div className="border-2 border-[#ff0000] p-3.5 sm:p-4 bg-black flex flex-col justify-between">
+            <div className="border-2 border-[#ff6600] p-3.5 sm:p-4 bg-black flex flex-col justify-between">
               <div>
-                <div className="text-xs sm:text-sm text-zinc-400 uppercase tracking-widest mb-2 border-b border-red-950 pb-1 flex justify-between font-bold">
-                  <span>FOUNDER</span>
+                <div className="text-xs sm:text-sm text-zinc-400 uppercase tracking-widest mb-2 border-b border-orange-950 pb-1 flex justify-between font-bold">
+                  <span className="flex items-center gap-1.5">
+                    <img src={`${baseUrl}pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art inline" />
+                    FOUNDER
+                  </span>
                   <span className="text-white">@spvov</span>
                 </div>
 
                 {/* Original spvov.jpg */}
-                <div className="border-2 border-[#ff0000] p-1 bg-black my-2">
+                <div className="border-2 border-[#ff6600] p-1 bg-black my-2">
                   <img 
                     src={`${baseUrl}spvov.jpg`} 
                     alt="SPVOV" 
@@ -249,8 +306,12 @@ export default function App() {
         {/* CASTES SECTION */}
         <div id="castes" className="retro-box-thick p-4 sm:p-6 md:p-7 mb-3 sm:mb-4 bg-black">
           <div className="text-center mb-4 sm:mb-5">
-            <div className="text-xs sm:text-sm text-zinc-400 uppercase tracking-[0.2em] font-bold">RECRUITMENT</div>
-            <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff0000] font-bold uppercase tracking-wide leading-tight">
+            <div className="flex items-center justify-center gap-2">
+              <img src={`${baseUrl}pixel_ghost.png`} alt="Ghost" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+              <span className="text-xs sm:text-sm text-zinc-400 uppercase tracking-[0.2em] font-bold">RECRUITMENT</span>
+              <img src={`${baseUrl}pixel_ghost.png`} alt="Ghost" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+            </div>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff6600] font-bold uppercase tracking-wide leading-tight">
               КАСТЫ ОТРЯДА
             </h2>
             <div className="text-xs sm:text-sm md:text-base text-zinc-300 mt-1">
@@ -260,44 +321,47 @@ export default function App() {
 
           <div className="space-y-2.5 sm:space-y-3">
             
-            <div className="border-2 border-[#ff0000] p-3 sm:p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-black">
+            <div className="border-2 border-[#ff6600] p-3 sm:p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-black">
               <div>
-                <div className="text-base sm:text-lg text-white font-bold tracking-wider">
-                  † ОСИНТ <span className="text-[#ff0000] text-sm sm:text-base">(ᴏᴄинᴛ)</span>
+                <div className="text-base sm:text-lg text-white font-bold tracking-wider flex items-center gap-2">
+                  <span>† ОСИНТ</span> 
+                  <span className="text-[#ff6600] text-sm sm:text-base">(ᴏᴄинᴛ)</span>
                 </div>
                 <div className="text-xs sm:text-sm text-zinc-400 mt-0.5">
                   Сбор информации, деанон мошенников, поиск скрытых чатов и администраторов скама.
                 </div>
               </div>
-              <span className="text-xs sm:text-sm border-2 border-[#ff0000] px-2.5 py-0.5 sm:py-1 text-[#ff0000] font-bold self-start sm:self-center shrink-0">
+              <span className="text-xs sm:text-sm border-2 border-[#ff6600] px-2.5 py-0.5 sm:py-1 text-[#ff6600] font-bold self-start sm:self-center shrink-0">
                 ИНТЕЛЛЕКТ
               </span>
             </div>
 
-            <div className="border-2 border-[#ff0000] p-3 sm:p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-black">
+            <div className="border-2 border-[#ff6600] p-3 sm:p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-black">
               <div>
-                <div className="text-base sm:text-lg text-white font-bold tracking-wider">
-                  † ТРОЛЛЬ <span className="text-[#ff0000] text-sm sm:text-base">(ᴛᴩᴏᴧᴧь)</span>
+                <div className="text-base sm:text-lg text-white font-bold tracking-wider flex items-center gap-2">
+                  <span>† ТРОЛЛЬ</span> 
+                  <span className="text-[#ff6600] text-sm sm:text-base">(ᴛᴩᴏᴧᴧь)</span>
                 </div>
                 <div className="text-xs sm:text-sm text-zinc-400 mt-0.5">
                   Психологическое давление на участников мусорных групп, дестабилизация токсиков.
                 </div>
               </div>
-              <span className="text-xs sm:text-sm border-2 border-[#ff0000] px-2.5 py-0.5 sm:py-1 text-[#ff0000] font-bold self-start sm:self-center shrink-0">
+              <span className="text-xs sm:text-sm border-2 border-[#ff6600] px-2.5 py-0.5 sm:py-1 text-[#ff6600] font-bold self-start sm:self-center shrink-0">
                 ПРЕССИНГ
               </span>
             </div>
 
-            <div className="border-2 border-[#ff0000] p-3 sm:p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-black">
+            <div className="border-2 border-[#ff6600] p-3 sm:p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-black">
               <div>
-                <div className="text-base sm:text-lg text-white font-bold tracking-wider">
-                  † РЕЙДЕР <span className="text-[#ff0000] text-sm sm:text-base">(ᴩᴇйдᴇᴩ)</span>
+                <div className="text-base sm:text-lg text-white font-bold tracking-wider flex items-center gap-2">
+                  <span>† РЕЙДЕР</span> 
+                  <span className="text-[#ff6600] text-sm sm:text-base">(ᴩᴇйдᴇᴩ)</span>
                 </div>
                 <div className="text-xs sm:text-sm text-zinc-400 mt-0.5">
                   Штурмовые рейды, спам-атаки, запуск боевого софта и полная зачистка чатов.
                 </div>
               </div>
-              <span className="text-xs sm:text-sm border-2 border-[#ff0000] px-2.5 py-0.5 sm:py-1 text-[#ff0000] font-bold self-start sm:self-center shrink-0">
+              <span className="text-xs sm:text-sm border-2 border-[#ff6600] px-2.5 py-0.5 sm:py-1 text-[#ff6600] font-bold self-start sm:self-center shrink-0">
                 УДАРНАЯ СИЛА
               </span>
             </div>
@@ -316,11 +380,15 @@ export default function App() {
           </div>
         </div>
 
-        {/* SERVICES AND PRICING (СО ЗВЕЗДОЧКАМИ ⭐) */}
+        {/* SERVICES AND PRICING (СО ЗВЕЗДОЧКАМИ ⭐ И ХЭЛЛОУИН КОНФЕТАМИ) */}
         <div id="services" className="retro-box-thick p-4 sm:p-6 md:p-7 mb-3 sm:mb-4 bg-black">
           <div className="text-center mb-4 sm:mb-5">
-            <div className="text-xs sm:text-sm text-zinc-400 uppercase tracking-[0.2em] font-bold">PRICING LIST</div>
-            <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff0000] font-bold uppercase tracking-wide leading-tight">
+            <div className="flex items-center justify-center gap-2">
+              <img src={`${baseUrl}pixel_candy_wrap.png`} alt="Candy" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+              <span className="text-xs sm:text-sm text-zinc-400 uppercase tracking-[0.2em] font-bold">PRICING LIST</span>
+              <img src={`${baseUrl}pixel_candy_wrap.png`} alt="Candy" className="w-5 h-5 sm:w-6 sm:h-6 pixel-art" />
+            </div>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl text-[#ff6600] font-bold uppercase tracking-wide leading-tight">
               УСЛУГИ КОМАНДЫ
             </h2>
             <div className="text-xs sm:text-sm md:text-base text-zinc-300 mt-1">
@@ -329,20 +397,22 @@ export default function App() {
           </div>
 
           {/* Brutalist services table with stars */}
-          <div className="border-2 border-[#ff0000] divide-y-2 divide-[#ff0000] text-xs sm:text-sm md:text-base">
+          <div className="border-2 border-[#ff6600] divide-y-2 divide-[#ff6600] text-xs sm:text-sm md:text-base">
             
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
-              <div>
-                <span className="text-white font-bold">🧲 Спам без публикации в тгк</span>
+              <div className="flex items-center gap-2">
+                <img src={`${baseUrl}pixel_candy_corn.png`} alt="" className="w-4 h-4 pixel-art" />
+                <span className="text-white font-bold">Спам без публикации в тгк</span>
               </div>
-              <span className="text-[#ff0000] font-bold uppercase border-2 border-[#ff0000] px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0">
+              <span className="text-[#ff6600] font-bold uppercase border-2 border-[#ff6600] px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0">
                 БЕСПЛАТНО
               </span>
             </div>
 
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
-              <div>
-                <span className="text-white font-bold">🧲 Спам с публикацией в тгк</span>
+              <div className="flex items-center gap-2">
+                <img src={`${baseUrl}pixel_candy_wrap.png`} alt="" className="w-4 h-4 pixel-art" />
+                <span className="text-white font-bold">Спам с публикацией в тгк</span>
               </div>
               <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
                 15 ⭐
@@ -350,8 +420,9 @@ export default function App() {
             </div>
 
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
-              <div>
-                <span className="text-white font-bold">🧲 Троллинг со спамом</span>
+              <div className="flex items-center gap-2">
+                <img src={`${baseUrl}pixel_candy_corn.png`} alt="" className="w-4 h-4 pixel-art" />
+                <span className="text-white font-bold">Троллинг со спамом</span>
               </div>
               <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
                 25 ⭐
@@ -359,8 +430,9 @@ export default function App() {
             </div>
 
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
-              <div>
-                <span className="text-white font-bold">🧲 Спам в лс цели</span>
+              <div className="flex items-center gap-2">
+                <img src={`${baseUrl}pixel_candy_wrap.png`} alt="" className="w-4 h-4 pixel-art" />
+                <span className="text-white font-bold">Спам в лс цели</span>
               </div>
               <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
                 50 ⭐
@@ -368,8 +440,9 @@ export default function App() {
             </div>
 
             <div className="p-3 sm:p-3.5 md:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3 bg-black">
-              <div>
-                <span className="text-white font-bold">🧲 Рейд с ботом который удаляет всех участников группы</span>
+              <div className="flex items-center gap-2">
+                <img src={`${baseUrl}pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art" />
+                <span className="text-white font-bold">Рейд с ботом который удаляет всех участников группы</span>
               </div>
               <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
                 100 ⭐
@@ -378,26 +451,26 @@ export default function App() {
 
           </div>
 
-          <div className="mt-3.5 sm:mt-4 p-3 sm:p-3.5 border border-red-900 text-xs sm:text-sm text-zinc-300 text-center space-y-1">
+          <div className="mt-3.5 sm:mt-4 p-3 sm:p-3.5 border border-orange-900 text-xs sm:text-sm text-zinc-300 text-center space-y-1">
             <p>
               Жалобы на группы писать <a href="https://t.me/spvov" target="_blank" rel="noreferrer" className="text-white underline font-bold">@spvov</a> / <a href="https://t.me/oelip" target="_blank" rel="noreferrer" className="text-white underline font-bold">@oelip</a> или директ канала.
             </p>
             <p>
-              Наш медиа-архив с записями рейдов: <a href="https://t.me/suarare" target="_blank" rel="noreferrer" className="text-[#ff0000] underline font-bold">клик</a>
+              Наш медиа-архив с записями рейдов: <a href="https://t.me/suarare" target="_blank" rel="noreferrer" className="text-[#ff6600] underline font-bold">клик</a>
             </p>
           </div>
 
         </div>
 
         {/* VINTAGE HIT COUNTER & SYSTEM FOOTER */}
-        <div className="border-2 border-[#ff0000] p-4 sm:p-5 text-center text-xs sm:text-sm space-y-2 bg-black">
+        <div className="border-2 border-[#ff6600] p-4 sm:p-5 text-center text-xs sm:text-sm space-y-2 bg-black">
           
-          <div className="inline-block border-2 border-[#ff0000] px-3.5 py-1 text-xs sm:text-sm md:text-base tracking-widest text-[#ff0000] font-bold">
-            YOU ARE VISITOR # <span className="text-white">{String(visitorCount).padStart(6, '0')}</span>
+          <div className="inline-block border-2 border-[#ff6600] px-3.5 py-1 text-xs sm:text-sm md:text-base tracking-widest text-[#ff6600] font-bold">
+            🎃 YOU ARE VISITOR # <span className="text-white">{String(visitorCount).padStart(6, '0')}</span> 🎃
           </div>
 
           <div className="text-zinc-500 text-[10px] sm:text-xs tracking-wider uppercase">
-            BEST VIEWED WITH NETSCAPE / 800x600 • PURE BLACK & RED
+            BEST VIEWED WITH NETSCAPE / 800x600 • PURE BLACK & HALLOWEEN ORANGE
           </div>
 
           <div className="text-zinc-400 text-xs sm:text-sm">
@@ -416,8 +489,8 @@ export default function App() {
 
       </div>
 
-      {/* STATIC BOTTOM BORDER */}
-      <div className="w-full bg-[#ff0000] h-1.5 sm:h-2 border-t-2 border-black" />
+      {/* STATIC BOTTOM BORDER (HALLOWEEN ORANGE) */}
+      <div className="w-full bg-[#ff6600] h-1.5 sm:h-2 border-t-2 border-black" />
 
     </div>
   );
