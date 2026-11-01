@@ -1,4 +1,16 @@
 import React, { useState, useEffect } from 'react';
+ 
+function IosEmoji({ name, alt, className = "w-4 h-4 inline-block align-middle" }) {
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  return (
+    <img 
+      src={`${baseUrl}ios_emoji/${name}.png`} 
+      alt={alt || name} 
+      className={`${className} inline-block select-none pointer-events-none align-middle`} 
+      draggable="false"
+    />
+  );
+}
 
 export default function App() {
   const [visitorCount, setVisitorCount] = useState(1337);
@@ -16,8 +28,10 @@ export default function App() {
     <div className="min-h-screen bg-black text-[#ff6600] font-serif-sua selection:bg-orange-600 selection:text-black w-full overflow-x-hidden">
       
       {/* 1. TOP STATIC ANNOUNCEMENT BAR (HALLOWEEN ORANGE) */}
-      <div className="w-full bg-[#ff6600] text-black text-center py-2 px-3 text-xs sm:text-sm md:text-base font-bold tracking-wider sm:tracking-widest uppercase select-none border-b-2 border-black leading-snug">
-        🎃 31 ОКТЯБРЯ ПРОШЛО — НАМ ИСПОЛНИЛСЯ 1 ГОД! † HALLOWEEN UPDATE † НАШ ТЕЛЕГРАМ: T.ME/SUARARE 🎃
+      <div className="w-full bg-[#ff6600] text-black text-center py-2 px-3 text-xs sm:text-sm md:text-base font-bold tracking-wider sm:tracking-widest uppercase select-none border-b-2 border-black leading-snug flex items-center justify-center gap-1.5 sm:gap-2">
+        <IosEmoji name="pumpkin" className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+        <span>31 ОКТЯБРЯ ПРОШЛО — НАМ ИСПОЛНИЛСЯ 1 ГОД! † HALLOWEEN UPDATE † НАШ ТЕЛЕГРАМ: T.ME/SUARARE</span>
+        <IosEmoji name="pumpkin" className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
       </div>
 
       {/* 2. SITE CONTAINER (RESPONSIVE & DESKTOP ZOOMED, WITH REAL OUTSIDE PUMPKINS) */}
@@ -112,7 +126,9 @@ export default function App() {
           {/* Retro nav menu with square brackets */}
           <nav className="flex flex-wrap justify-center gap-1.5 sm:gap-2.5 text-xs sm:text-sm md:text-base font-bold uppercase tracking-wider border-y-2 border-[#ff6600] py-2">
             <a href="#about" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5">[ О ПРОЕКТЕ ]</a>
-            <a href="#anniversary" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5 text-white bg-orange-950/70 border border-orange-600">[ НАМ 1 ГОД! 🎃 ]</a>
+            <a href="#anniversary" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5 text-white bg-orange-950/70 border border-orange-600 inline-flex items-center gap-1">
+              [ НАМ 1 ГОД! <IosEmoji name="pumpkin" className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline-block" /> ]
+            </a>
             <a href="#creators" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5">[ СОЗДАТЕЛИ ]</a>
             <a href="#castes" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5">[ КАСТЫ ]</a>
             <a href="#services" className="hover:text-black hover:bg-[#ff6600] px-1.5 py-0.5">[ УСЛУГИ ]</a>
@@ -422,7 +438,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* SERVICES AND PRICING (СО ЗВЕЗДОЧКАМИ ⭐ И ХЭЛЛОУИН КОНФЕТАМИ) */}
+        {/* SERVICES AND PRICING (WITH IOS STARS) */}
         <div id="services" className="retro-box-thick p-4 sm:p-6 md:p-7 mb-3 sm:mb-4 bg-black">
           <div className="text-center mb-4 sm:mb-5">
             <div className="flex items-center justify-center gap-2">
@@ -456,8 +472,8 @@ export default function App() {
                 <img src={`${baseUrl}real_pixel_candy_wrap.png`} alt="" className="w-4 h-4 pixel-art" />
                 <span className="text-white font-bold">Спам с публикацией в тгк</span>
               </div>
-              <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
-                15 ⭐
+              <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20 inline-flex items-center gap-1.5">
+                15 <IosEmoji name="star" className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline-block" />
               </span>
             </div>
 
@@ -466,8 +482,8 @@ export default function App() {
                 <img src={`${baseUrl}real_pixel_candy_corn.png`} alt="" className="w-4 h-4 pixel-art" />
                 <span className="text-white font-bold">Троллинг со спамом</span>
               </div>
-              <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
-                25 ⭐
+              <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20 inline-flex items-center gap-1.5">
+                25 <IosEmoji name="star" className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline-block" />
               </span>
             </div>
 
@@ -476,8 +492,8 @@ export default function App() {
                 <img src={`${baseUrl}real_pixel_candy_wrap.png`} alt="" className="w-4 h-4 pixel-art" />
                 <span className="text-white font-bold">Спам в лс цели</span>
               </div>
-              <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
-                50 ⭐
+              <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20 inline-flex items-center gap-1.5">
+                50 <IosEmoji name="star" className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline-block" />
               </span>
             </div>
 
@@ -486,8 +502,8 @@ export default function App() {
                 <img src={`${baseUrl}real_pixel_pumpkin.png`} alt="" className="w-4 h-4 pixel-art" />
                 <span className="text-white font-bold">Рейд с ботом который удаляет всех участников группы</span>
               </div>
-              <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20">
-                100 ⭐
+              <span className="text-yellow-400 font-bold border-2 border-yellow-600 px-2.5 py-0.5 text-xs sm:text-sm self-start sm:self-center shrink-0 bg-yellow-950/20 inline-flex items-center gap-1.5">
+                100 <IosEmoji name="star" className="w-3.5 h-3.5 sm:w-4 sm:h-4 inline-block" />
               </span>
             </div>
 
@@ -507,8 +523,10 @@ export default function App() {
         {/* VINTAGE HIT COUNTER & SYSTEM FOOTER */}
         <div className="border-2 border-[#ff6600] p-4 sm:p-5 text-center text-xs sm:text-sm space-y-2 bg-black">
           
-          <div className="inline-block border-2 border-[#ff6600] px-3.5 py-1 text-xs sm:text-sm md:text-base tracking-widest text-[#ff6600] font-bold">
-            🎃 YOU ARE VISITOR # <span className="text-white">{String(visitorCount).padStart(6, '0')}</span> 🎃
+          <div className="inline-flex items-center justify-center gap-2 border-2 border-[#ff6600] px-3.5 py-1 text-xs sm:text-sm md:text-base tracking-widest text-[#ff6600] font-bold">
+            <IosEmoji name="pumpkin" className="w-4 h-4 sm:w-5 sm:h-5 inline-block shrink-0" />
+            <span>YOU ARE VISITOR # <span className="text-white">{String(visitorCount).padStart(6, '0')}</span></span>
+            <IosEmoji name="pumpkin" className="w-4 h-4 sm:w-5 sm:h-5 inline-block shrink-0" />
           </div>
 
           <div className="text-zinc-500 text-[10px] sm:text-xs tracking-wider uppercase">
